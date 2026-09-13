@@ -1,0 +1,528 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+:root{
+    --vinho: #5A1E2E;
+    --rosa-escuro: #B85C72;
+    --rosa-claro: #E8C9CF;
+    --bege-quente: #EAD9CC;
+    --rosa-acinzentado: #C7A7AD;
+    --marrom-escuro: #3D2B32;
+ 
+    --texto-secundario: #6B4A56;
+    --texto-suave: #7A7A7A;
+ 
+    --fundo-principal: #FDF6F3;
+    --fundo-card: #F3ECE7;
+    --fundo-input: #FAEDEF;
+    --borda: #E7D4DB;
+ 
+    --oswald: "Oswald", sans-serif;
+    --poppins: "Poppins", sans-serif;
+ 
+    --container: 1100px;
+    --radius: 18px;
+    --transicao: 0.3s ease;
+}
+
+body{
+    font-family: var(--poppins);
+    background-color: var(--fundo-principal);
+    color: var(--marrom-escuro);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+img{
+    max-width: 100%;
+    display: block;
+}
+ 
+a{
+    text-decoration: none;
+    color: inherit;
+}
+ 
+ul{
+    list-style: none;
+}
+ 
+button{
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: inherit;
+}
+ 
+:focus-visible{
+    outline: 3px solid var(--rosa-escuro);
+    outline-offset: 3px;
+}
+
+/* HEADER */
+.header{
+    display: flex;
+    align-items: center;
+    background-color: var(--vinho);
+    padding: 0 6%;
+    min-height: 84px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(90, 30, 46, 0.15);
+}
+    .header-logo, .header-nav{
+        flex: 0 0 50%;
+        max-width: 50%;
+        display: flex;
+        align-items: center;
+    }
+    .header-logo{
+        justify-content: flex-start;
+    }
+    .header-nav{
+        justify-content: flex-end;
+    }
+    .logo{
+        font-family: var(--oswald);
+        font-weight: 600;
+        font-size: 1.4rem;
+        color: var(--bege-quente);
+        letter-spacing: 0.5px;
+    }
+    .nav-list{
+        display: flex;
+        gap: 2.2rem;
+    }
+    .nav-link{
+        font-family: var(--oswald);
+        font-weight: 500;
+        font-size: 1rem;
+        color: var(--rosa-claro);
+        padding: 0.4rem 0.1rem;
+        border-bottom: 2px solid transparent;
+        transition: color var(--transicao), border-color var(--transicao);
+    }
+    .nav-link:hover, .nav-link.is-active{
+        color: #ffffff;
+        border-bottom-color: var(--rosa-escuro);
+    }
+
+/* Hamburguer */
+.nav-toggle{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 34px;
+    height: 34px;
+}
+    .nav-toggle span{
+        display: block;
+        height: 2px;
+        width: 100%;
+        background-color: var(--bege-quente);
+        transition: transform var(--transicao), opacity var(--transicao);
+    }
+    
+    .nav-toggle[aria-expanded="true"] span:nth-child(1){
+        transform: translateY(7px) rotate(45deg);
+    }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2){
+        opacity: 0;
+    }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3){
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+/* CARROSSEL */
+.carousel-section{
+    max-width: var(--container);
+    margin: 2.5rem auto 3rem;
+    padding: 0 6%;
+}
+.carousel{
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius);
+    box-shadow: 0 10px 30px rgba(90, 30, 46, 0.12);
+    border: 1px solid var(--borda);
+}
+    .carousel-track{
+        display: flex;
+        transition: transform 0.6s ease;
+    }
+    .carousel-slide{
+        flex: 0 0 100%;
+        width: 100%;
+        aspect-ratio: 16 / 8;
+        background-color: var(--rosa-acinzentado);
+    }
+        .carousel-slide img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    .carousel-arrow{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(61, 43, 50, 0.45);
+        color: #fff;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        transition: background-color var(--transicao);
+    }
+    .carousel-arrow:hover{
+        background-color: rgba(184, 92, 114, 0.85);
+    }
+    .carousel-arrow-prev{left: 14px;}
+    .carousel-arrow-next{right: 14px;}
+
+    .carousel-controls{
+        display: flex;
+        justify-content: center;
+        gap: 0.7rem;
+        margin-top: 1.2rem;
+    }
+    .carousel-dot{
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background-color: var(--fundo-card);
+        border: 1px solid var(--borda);
+        color: var(--texto-secundario);
+        font-family: var(--oswald);
+        font-size: 0.9rem;
+        transition: background-color var(--transicao), color var(--transicao), transform var(--transicao);
+    }
+    .carousel-dot:hover{
+        transform: translateY(-2px);
+    }
+    .carousel-dot.is-active{
+        background-color: var(--rosa-escuro);
+        color: #fff;
+        border-color: var(--rosa-escuro);
+    }
+
+/* CALENDÁRIO */
+.calendar-section{
+    max-width: var(--container);
+    margin: 0 auto 4rem;
+    padding: 0 6%;
+}
+.calendar{
+    display: flex;
+    gap: 1.6rem;
+    align-items: stretch;
+}
+    .calendar-list{
+        flex: 0 0 240px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.7rem;
+        align-content: start;
+    }
+    .calendar-day{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.15rem;
+        padding: 0.85rem 0.4rem;
+        background-color: var(--fundo-card);
+        border: 1px solid var(--borda);
+        border-radius: 12px;
+        color: var(--texto-secundario);
+        transition: background-color var(--transicao), color var(--transicao), transform var(--transicao), border-color var(--transicao);
+    }
+    .calendar-day-weekday{
+        font-family: var(--oswald);
+        font-size: 0.7rem;
+        text-transform: lowercase;
+        color: var(--texto-suave);
+    }
+    .calendar-day-number{
+        font-family: var(--oswald);
+        font-weight: 600;
+        font-size: 1.3rem;
+    }
+    .calendar-day-lock{
+        font-size: 0.85rem;
+        margin-top: 0.1rem;
+    }
+        .calendar-day:not(:disabled):hover{
+            transform: translateY(-2px);
+            border-color: var(--rosa-escuro);
+        }
+    .calendar-day.is-active{
+        background-color: var(--rosa-escuro);
+        border-color: var(--rosa-escuro);
+        color: #ffffff;
+    }
+    .calendar-day.is-active .calendar-day-weekday{
+        color: var(--rosa-claro);
+    }
+        .calendar-day:disabled{
+            cursor: not-allowed;
+            color: var(--rosa-acinzentado);
+            opacity: 0.6;
+        }
+    .calendar-panel{
+        flex: 1;
+        background-color: var(--fundo-card);
+        border: 1px solid var(--borda);
+        border-radius: var(--radius);
+        padding: 2rem 2.2rem;
+        box-shadow: 0 6px 20px rgba(90, 30, 46, 0.08);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .calendar-eyebrow{
+        font-family: var(--oswald);
+        font-size: 0.85rem;
+        color: var(--rosa-escuro);
+        margin-bottom: 0.3rem;
+    }
+    .calendar-title{
+        font-family: var(--oswald);
+        font-weight: 600;
+        font-size: 1.5rem;
+        color: var(--vinho);
+        margin-bottom: 0.6rem;
+    }
+    .calendar-text{
+        text-align: justify;
+        font-size: 0.98rem;
+        color: var(--texto-secundario);
+        white-space: pre-line;
+    }
+
+/* FOOTER */
+.footer{
+    background-color: var(--vinho);
+    color: var(--rosa-claro);
+    text-align: center;
+    padding: 2rem 6%;
+}
+.footer-small{
+    margin-top: 0.4rem;
+    font-size: 0.8rem;
+    color: var(--rosa-acinzentado);
+}
+
+/* VALES */
+.vouchers-section{
+    max-width: var(--container);
+    margin: 0 auto 4rem;
+    padding: 2.5rem 6% 0;
+}
+    .vouchers-header{
+        max-width: 620px;
+        margin-bottom: 2.2rem;
+    }
+    .vouchers-header-title{
+        font-family: var(--oswald);
+        font-weight: 600;
+        font-size: 2rem;
+        color: var(--vinho);
+        margin-bottom: 0.5rem;
+    }
+    .vouchers-header-description{
+        color: var(--texto-secundario);
+        font-size: 1rem;
+    }
+    .vouchers-grid{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 1.4rem;
+    }
+
+    .voucher-card{
+        display: flex;
+        flex-direction: column;
+        background-color: var(--fundo-card);
+        border: 1px solid var(--borda);
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: 0 6px 20px rgba(90, 30, 46, 0.08);
+        transition: box-shadow var(--transicao), transform var(--transicao), opacity var(--transicao);
+    }
+    .voucher-card:hover{
+        box-shadow: 0 10px 26px rgba(90, 30, 46, 0.14);
+        transform: translateY(-3px);
+    }
+    .voucher-card-accent{
+        height: 8px;
+        width: 100%;
+        background-color: var(--cor-vale, var(--rosa-escuro));
+    }
+
+    .voucher-card--vinho{--cor-vale: var(--vinho); }
+    .voucher-card--rosa-escuro{--cor-vale: var(--rosa-escuro); }
+    .voucher-card--bege{--cor-vale: var(--bege-quente); }
+    .voucher-card--acinzentado{--cor-vale: var(--rosa-acinzentado); }
+
+    .voucher-card-body{
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        padding: 1.6rem 1.6rem 1.4rem;
+        flex: 1;
+    }
+    
+    .voucher-card-title{
+        font-family: var(--oswald);
+        font-weight: 600;
+        font-size: 1.2rem;
+        color: var(--vinho);
+    }
+    .voucher-card-description{
+        font-size: 0.92rem;
+        color: var(--texto-secundario);
+        flex: 1;
+    }
+    .voucher-card-footer{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.8rem;
+        margin-top: 0.4rem;
+        padding-top: 0.9rem;
+        border-top: 1px solid var(--borda);
+    }
+    .voucher-card-count{
+        font-family: var(--oswald);
+        font-size: 0.78rem;
+        color: var(--texto-suave);
+    }
+    .voucher-card-button{
+        font-family: var(--oswald);
+        font-weight: 500;
+        font-size: 0.85rem;
+        color: #fff;
+        background-color: var(--cor-vale, var(--rosa-escuro));
+        padding: 0.55rem 1.1rem;
+        border-radius: 999px;
+        transition: filter var(--transicao), transform var(--transicao);
+        flex-shrink: 0;
+    }
+    .voucher-card-button:hover:not(:disabled){
+        filter: brightness(0.92);
+        transform: translateY(-1px);
+    }
+    .voucher-card-button:disabled{
+        background-color: var(--rosa-acinzentado);
+        cursor: not-allowed;
+        transform: none;
+    }
+    .voucher-card.is-esgotado{
+        opacity: 0.6;
+    }
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px){
+    .header{
+        flex-wrap: wrap;
+        padding: 0.9rem 6%;
+    }
+    .header-logo{
+        flex: 0 0 auto;
+        max-width: none;
+    }
+    .header-nav{
+        flex: 0 0 auto;
+        max-width: none;
+        margin-left: auto;
+    }
+    .nav-toggle{
+        display: flex;
+    }
+    .nav{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--vinho);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height var(--transicao);
+    }
+    .nav.is-open{
+        max-height: 260px;
+    }
+    .nav-list{
+        flex-direction: column;
+        gap: 0;
+        padding: 0.5rem 6% 1rem;
+    }
+    .nav-list li{
+        border-top: 1px solid rgba(232, 201, 207, 0.15);
+    }
+    .nav-link{
+        display: block;
+        padding: 0.9rem 0;
+    }
+    .reveal-card{
+        flex-direction: column;
+    }
+    .reveal-card-image{
+        flex: 0 0 200px;
+    }
+
+    .calendar{
+        flex-direction: column;
+    }
+    .calendar-list{
+        flex: none;
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+ 
+@media (max-width: 480px){
+    .carousel-arrow{
+        width: 34px;
+        height: 34px;
+    }
+    .reveal-card-content{
+        padding: 1.4rem 1.2rem;
+    }
+    .reveal-card-title{
+        font-size: 1.2rem;
+    }
+
+    .calendar-panel{
+        padding: 1.5rem 1.4rem;
+    }
+    .calendar-title{
+        font-size: 1.2rem;
+    }
+    .calendar-list{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+ 
+@media (prefers-reduced-motion: reduce){
+    *{
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

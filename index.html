@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Miguel Fernandes Silva">
+    <meta name="description" content="Presente para a melhor mãe do planeta">
+    <meta name="keywords" content="Eu, Te, Amo">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title> De Presente </title>
+</head>
+<body>
+<header class="header">
+    <div class="header-logo">
+        <a href="#topo" class="logo">
+            Para Minha Mãe
+        </a>
+    </div>
+
+    <div class="header-nav">
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir Menu"
+        aria-expanded="false" aria-controls="menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav" id="menu">
+            <ul class="nav-list">
+                <li>
+                    <a href="#" class="nav-link is-active"> Home </a>
+                </li>
+                <li>
+                    <a role="link" aria-disabled="true" class="nav-link" target="_self"> 
+                        Música 
+                </a>
+                </li>
+                <li>
+                    <a role="link" aria-disabled="true" class="nav-link" target="_self"> 
+                        Galeria 
+                    </a>
+                </li>
+                <li>
+                    <a href="./pages/vales.html" 
+                    class="nav-link" target="_self"> Vales </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<main id="topo">
+    <!-- CARROSSEL -->
+    <section class="carousel-section" aria-label="Galeria de Fotos">
+        <div class="carousel" id="carousel">
+            <div class="carousel-track" id="carouselTrack">
+                <div class="carousel-slide">
+                    <img src="./assets/foto1.jpeg" 
+                    alt="">
+                </div>
+
+                <div class="carousel-slide">
+                    <img src="./assets/foto2.jpeg" 
+                    alt="">
+                </div>
+
+                <div class="carousel-slide">
+                    <img src="./assets/foto3.jpg" 
+                    alt="">
+                </div>
+
+                <div class="carousel-slide">
+                    <img src="./assets/foto4.jpeg" 
+                    alt="">
+                </div>
+            </div>
+
+            <button class="carousel-arrow carousel-arrow-prev"
+            id="prevBtn" aria-label="Imagem anterior">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <button class="carousel-arrow carousel-arrow-next" 
+            id="nextBtn" aria-label="Próxima imagem">
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+
+        <div class="carousel-controls" id="carouselControls"
+        role="tablist" aria-label="Selecionar Imagem do Carrossel">
+            <button class="carousel-dot is-active"
+            data-index="0" role="tab" aria-selected="true"
+            aria-label="Ver Imagem 1">
+            </button>
+            
+            <button class="carousel-dot" data-index="1" role="tab"
+            aria-selected="false" aria-label="Ver Imagem 2">
+            </button>
+
+            <button class="carousel-dot" data-index="2" role="tab"
+            aria-selected="false" aria-label="Ver Imagem 3">
+            </button>
+
+            <button class="carousel-dot" data-index="3" role="tab"
+            aria-selected="false" aria-label="Ver Imagem 4">
+            </button>
+        </div>
+    </section>
+
+    <!-- CALENDÁRIO DE MENSAGENS -->
+    <section class="calendar-section" aria-label="Calendário de mensagens diárias">
+        <div class="calendar">
+ 
+            <div class="calendar-list" id="calendarList" 
+            role="tablist" aria-label="Selecionar dia">
+            </div>
+ 
+            <div class="calendar-panel">
+                <p class="calendar-eyebrow" id="panelDate"> &nbsp; </p>
+                <h2 class="calendar-title" id="panelTitle">
+                    Selecione um dia disponível
+                </h2>
+                <p class="calendar-text" id="panelText">
+                    Escolha uma data já revelada no calendário ao lado 
+                    para ler a mensagem daquele dia.
+                </p>
+            </div>
+        </div>
+    </section>
+</main>
+<footer class="footer">
+    <p> Feito com muito carinho para o dia de minha mãe. </p>
+    <p class="footer-small">
+        <span id="ano"></span>
+    </p>
+</footer>
+
+    <script src="./javascript/script.js" defer></script>
+</body>
+</html>
